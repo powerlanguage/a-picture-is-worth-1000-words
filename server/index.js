@@ -1,9 +1,10 @@
 const express = require('express');
 const axios = require('axios');
 
-// Refactor out
-const emojiTree = require('emoji-tree');
+// Refactor emoji parsing to separate file
 
+// Finds emoji in text
+const emojiTree = require('emoji-tree');
 
 const app = express();
 const port = 3000;
@@ -21,9 +22,9 @@ let messagesContainingEmoji = 0;
 app.use(express.static(__dirname + '/../client/dist'));
 
 
-app.get('/load', (req, res) => {
-  res.send(['💦', '🔌', '🔥', '👕', '🎁', '🍾', '🇲🇽', '🎬', '🎟', '🏈',]);
-})
+// app.get('/load', (req, res) => {
+//   res.send(['💦', '🔌', '🔥', '👕', '🎁', '🍾', '🇲🇽', '🎬', '🎟', '🏈',]);
+// })
 
 app.get('/process', (req, res) => {
   axios.get(url)

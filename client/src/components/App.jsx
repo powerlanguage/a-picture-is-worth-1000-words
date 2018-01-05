@@ -1,6 +1,7 @@
 import React from 'react'
 import Emoji from './Emoji.jsx'
-import Info from './Info.jsx'
+import Stats from './Stats.jsx'
+import EmojiFeed from './EmojiFeed.jsx'
 
 class App extends React.Component{
 
@@ -32,13 +33,8 @@ class App extends React.Component{
 
   render() {
 
-    // Font limits
-    const BASE_FONT_SIZE = 8;
-    const MAX_FONT_SIZE = 100;
-
-    // Sort the hashmap of counts so we can always display the most
-    // used first
-
+    // Sort our emoji count to an array of tuples so it
+    // can be used by various components
     const sorted = [];
     for(const key in this.state.emojiCount) {
       sorted.push([key, this.state.emojiCount[key]]);
@@ -48,21 +44,12 @@ class App extends React.Component{
 
     return(
       <div>
-        { sorted.map((emojiCount, i) => {
-
-          const size = (emojiCount[1] + BASE_FONT_SIZE < MAX_FONT_SIZE) ? emojiCount[1] + BASE_FONT_SIZE : MAX_FONT_SIZE;
-
-          return <Emoji
-            key={i}
-            emoji={emojiCount[0]}
-            count={emojiCount[1]}
-            size={size}
-          />
-        }
-        )}
-        <Info description={"Total Messages Received"} val={this.state.totalMessages} />
-        <Info description={"Messages Containing Emoji"} val={this.state.messagesContainingEmoji} />
-        <Info description={"Percentage"} val={Math.floor((this.state.messagesContainingEmoji / this.state.totalMessages) * 100)}/>
+        <Stats
+          sortedEmojiCount={sorted}
+          totalMessages={this.state.totalMessages}
+          messagesContainingEmoji={this.state.messagesContainingEmoji}
+        />
+        <EmojiFeed sortedEmojiCount={sorted}/>
       </div>
     )
   }

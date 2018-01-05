@@ -14,6 +14,10 @@ A user can visit a page to see the count of all emoji used
 - [x] store emoji counts on server
 - [x] return the counts
 
+- [ ] create a stats component
+- [x] create a livefeed component
+- [ ] add navigation and routes to each of these components
+
 - [ ] add route to get count for each emoji?
 - [ ] load from the DB and then stream to the client?
 - [ ] set up sql database?
@@ -21,7 +25,7 @@ A user can visit a page to see the count of all emoji used
 - [ ] load into memory from DB if empty
 - [ ] persist to DB if on each update
 
-- [ ] make sizes relative - find min and max count and scale sizes relative to that?
+- [-] make sizes relative - find min and max count and scale sizes relative to that?
 - [ ] line height?
 
 - [ ] see new additions on response

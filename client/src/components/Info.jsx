@@ -3,11 +3,14 @@ import React from 'react'
 const Info = (props) => {
 
   return (
-    <div>
-      <h2>{props.description}</h2>
-      <div>{props.val}</div>
+    <div className="info">
+      {props.description}
+      {props.data}
     </div>
   )
 }
 
 module.exports = Info;
+
+
+// <b>{props.description}:</b>{props.val}
