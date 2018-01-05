@@ -15,9 +15,11 @@ const emojiTree = require('emoji-tree');
 
 mockData.forEach(entry => {
   textTree = emojiTree(entry.message);
+  console.log(textTree);
   textTree.forEach(item => {
     if(item.type === 'emoji') {
       console.log(item.text);
     }
   })
+  console.log('-----')
 })
