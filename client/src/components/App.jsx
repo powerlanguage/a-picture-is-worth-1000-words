@@ -1,5 +1,6 @@
 import React from 'react'
 import Emoji from './Emoji.jsx'
+import Info from './Info.jsx'
 
 class App extends React.Component{
 
@@ -7,34 +8,61 @@ class App extends React.Component{
     super();
     this.state = {
       emojiCount: {},
-      totalMessage: 0,
+      totalMessages: 0,
       messagesContainingEmoji: 0,
       recentEmoji: []
     }
+    this.getUpdates = this.getUpdates.bind(this);
   }
 
-  componentDidMount(){
+  componentDidMount() {
+    this.getUpdates();
+    setInterval(this.getUpdates, 500);
+  }
+
+  getUpdates() {
     fetch('/process')
       .then(response => {
         return response.json()
       })
       .then(serverData => {
-        console.log(serverData);
         this.setState (serverData);
       })
   }
 
   render() {
-    console.log(this.state);
+
+    // Font limits
+    const BASE_FONT_SIZE = 8;
+    const MAX_FONT_SIZE = 100;
+
+    // Sort the hashmap of counts so we can always display the most
+    // used first
+
+    const sorted = [];
+    for(const key in this.state.emojiCount) {
+      sorted.push([key, this.state.emojiCount[key]]);
+    }
+
+    sorted.sort((a, b) => b[1] - a[1]);
 
     return(
       <div>
-        { Object.keys(this.state.emojiCount).map((emoji, i) =>
-          <Emoji
+        { sorted.map((emojiCount, i) => {
+
+          const size = (emojiCount[1] + BASE_FONT_SIZE < MAX_FONT_SIZE) ? emojiCount[1] + BASE_FONT_SIZE : MAX_FONT_SIZE;
+
+          return <Emoji
             key={i}
-            emoji={emoji}
+            emoji={emojiCount[0]}
+            count={emojiCount[1]}
+            size={size}
           />
+        }
         )}
+        <Info description={"Total Messages Received"} val={this.state.totalMessages} />
+        <Info description={"Messages Containing Emoji"} val={this.state.messagesContainingEmoji} />
+        <Info description={"Percentage"} val={Math.floor((this.state.messagesContainingEmoji / this.state.totalMessages) * 100)}/>
       </div>
     )
   }

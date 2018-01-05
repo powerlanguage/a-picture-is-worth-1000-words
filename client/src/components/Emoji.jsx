@@ -2,13 +2,8 @@ import React from 'react'
 
 const Emoji = (props) => {
 
-  function getRandomInt(min, max){
-    return Math.floor(Math.random() * (max - min)) + min;
-  }
-
-  const random = getRandomInt(8, 100);
   const style = {
-    fontSize: random
+    fontSize: props.size
   }
 
   return (
