@@ -9,9 +9,9 @@ const EmojiTable = (props) => {
       <table>
         <thead>
           <tr>
-            <td>Emoji</td>
-            <td>Text</td>
-            <td>Count</td>
+            <th>Emoji</th>
+            <th>Text</th>
+            <th>Count</th>
           </tr>
         </thead>
         <tbody>

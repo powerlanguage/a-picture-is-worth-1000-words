@@ -14,9 +14,16 @@ A user can visit a page to see the count of all emoji used
 - [x] store emoji counts on server
 - [x] return the counts
 
-- [ ] create a stats component
+- [x] create a stats component
 - [x] create a livefeed component
-- [ ] add navigation and routes to each of these components
+- [x] add emoji text parser
+- [x] add navigation and routes to each of these components
+- [x] add average emoji per message
+
+- [ ] basic styling
+- [ ] add live feed of recentlyAdded emoji
+- [ ] add loading state
+
 
 - [ ] add route to get count for each emoji?
 - [ ] load from the DB and then stream to the client?

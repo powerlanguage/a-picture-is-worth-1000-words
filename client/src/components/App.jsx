@@ -1,7 +1,13 @@
 import React from 'react'
-import Emoji from './Emoji.jsx'
 import Stats from './Stats.jsx'
 import EmojiFeed from './EmojiFeed.jsx'
+import Loading from './Loading.jsx'
+
+import {
+  Route,
+  NavLink,
+  HashRouter
+} from 'react-router-dom'
 
 class App extends React.Component{
 
@@ -17,8 +23,11 @@ class App extends React.Component{
   }
 
   componentDidMount() {
-    this.getUpdates();
-    setInterval(this.getUpdates, 500);
+    setTimeout(() => {
+      this.getUpdates();
+      setInterval(this.getUpdates, 500);
+    }, 750)
+
   }
 
   getUpdates() {
@@ -43,17 +52,59 @@ class App extends React.Component{
     sorted.sort((a, b) => b[1] - a[1]);
 
     return(
-      <div>
-        <Stats
-          sortedEmojiCount={sorted}
-          totalMessages={this.state.totalMessages}
-          messagesContainingEmoji={this.state.messagesContainingEmoji}
-        />
-        <EmojiFeed sortedEmojiCount={sorted}/>
-      </div>
+      <HashRouter>
+        <div id="container">
+          <ul className="navigation">
+            <li><NavLink exact to="/">Feed</NavLink></li>
+            <li><NavLink to="/statistics">Statistics</NavLink></li>
+          </ul>
+            <div className="content">
+              {this.state.totalMessages ? (
+                <div>
+                  <Route
+                    exact path="/"
+                    render={ () =>
+                      <EmojiFeed sortedEmojiCount={sorted}/>
+                    }/>
+                  <Route
+                    path="/statistics"
+                    render={ () =>
+                      <Stats
+                        sortedEmojiCount={sorted}
+                        totalMessages={this.state.totalMessages}
+                        messagesContainingEmoji={this.state.messagesContainingEmoji}/>
+                    }/>
+                </div>
+                ) : (
+                  <Loading />
+                )}
+            </div>
+        </div>
+      </HashRouter>
     )
   }
 
 }
 
 module.exports = App;
+
+          // {this.state.totalMessages ? (
+          //   <div className="content">
+          //     <Route
+          //       exact path="/"
+          //       render={ () =>
+          //         <EmojiFeed sortedEmojiCount={sorted}/>
+          //       }/>
+          //     <Route
+          //       path="/statistics"
+          //       render={ () =>
+          //         <Stats
+          //           sortedEmojiCount={sorted}
+          //           totalMessages={this.state.totalMessages}
+          //           messagesContainingEmoji={this.state.messagesContainingEmoji}
+          //         />
+          //       }/>
+          //   </div>
+          //   ) : (
+          //     <Loading />
+          //   )

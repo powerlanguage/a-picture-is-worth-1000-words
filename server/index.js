@@ -47,6 +47,7 @@ app.get('/process', (req, res) => {
         // Parse message to char map
         const charMap = emojiTree(message);
         let seenEmojiInMessage = false;
+        let countEmojiInMessage = 0;
         totalMessages += 1;
 
         charMap.forEach(char => {

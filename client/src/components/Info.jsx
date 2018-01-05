@@ -4,8 +4,8 @@ const Info = (props) => {
 
   return (
     <div className="info">
-      {props.description}
-      {props.data}
+      <div className="data">{props.data}</div>
+      <div className="description">{props.description}</div>
     </div>
   )
 }
