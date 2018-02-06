@@ -1,0 +1,123 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Helvetica-Neue", Helvetica;
+  background-color: #e6ecf0;
+}
+
+#container {
+  background-color: #fff;
+  width: 640px;
+  margin: 0 auto;
+}
+
+.content {
+  padding: 20px;
+  min-height: 90vh;
+  border-left: 1px solid #d4d4d4;
+  border-right: 1px solid #d4d4d4;
+  border-bottom: 1px solid #d4d4d4;
+}
+
+.navigation {
+  display: flex;
+  list-style: none;
+  padding-left: 10px;
+  background-color: #009a64;
+  border-left: 1px solid #039260;
+  border-right: 1px solid #039260;
+}
+
+.navigation li {
+  display: block;
+  padding: 10px;
+}
+
+.navigation li a {
+  text-decoration: none;
+  color: #fff;
+}
+
+.navigation li a:hover {
+  border-bottom: 1px solid #fff;
+}
+
+.navigation li a.active {
+  font-weight: bold;
+}
+
+.statistics .information {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.statistics .information .info {
+  flex: 1;
+  text-align: center;
+}
+
+.info .data {
+  font-size: 2.5em;
+  font-weight: 600;
+  color: #009a64;
+}
+
+.info .description {
+  font-size: 0.8em;
+  font-style: italic;
+}
+
+table {
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 1rem;
+    background-color: transparent;
+    text-align: left;
+    border-collapse: collapse;
+    line-height: 1.5em;
+}
+
+table thead tr {
+  border-top: none;
+}
+
+table thead th {
+    padding: .75rem;
+    vertical-align: bottom;
+    border-bottom: 2px solid #dee2e6;
+}
+
+table td, table tr {
+  padding: .75rem;
+  vertical-align: top;
+  border-top: 1px solid #dee2e6;
+}
+
+.loading {
+  padding: 40%;
+}
+
+.loading-message {
+  font-size: 0.8em;
+  font-style: italic;
+}
+
+.loader {
+  opacity: 0.2;
+  display: inline-block;
+  font-size: 100px;
+  animation: rotation 2s infinite linear;
+}
+
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}
