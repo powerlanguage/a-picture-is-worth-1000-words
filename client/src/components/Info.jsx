@@ -11,6 +11,3 @@ const Info = (props) => {
 }
 
 module.exports = Info;
-
-
-// <b>{props.description}:</b>{props.val}

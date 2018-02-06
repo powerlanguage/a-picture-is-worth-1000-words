@@ -1,30 +1,20 @@
 const express = require('express');
 const axios = require('axios');
 
-// Refactor emoji parsing to separate file
-
 // Finds emoji in text
 const emojiTree = require('emoji-tree');
 
 const app = express();
-const port = 3000;
+const port = env.PORT || 3000;
 app.listen(port, () => console.log(`Server listening on ${port}`));
 
 let url = "https://venmo.com/api/v5/public"
-// load route
-// return parsed data to client
-// client renders passed back data
 
 const emojiCount = {};
 let totalMessages = 0;
 let messagesContainingEmoji = 0;
 
 app.use(express.static(__dirname + '/../client/dist'));
-
-
-// app.get('/load', (req, res) => {
-//   res.send(['💦', '🔌', '🔥', '👕', '🎁', '🍾', '🇲🇽', '🎬', '🎟', '🏈',]);
-// })
 
 app.get('/process', (req, res) => {
   axios.get(url)
@@ -79,40 +69,3 @@ app.get('/process', (req, res) => {
     })
     .catch(err => res.send(err));
 })
-
-/*
-processor = () => {
-
-  axios.get(url)
-    .then(response => {
-      // figure out if we've seen these before?
-      messages = response.data.data.map(item => item.message);
-      return messages;
-    })
-    .then(messages => {
-      // TODO: Clean this up
-      // maybe write one map reduce function that accepts an entire
-      // venmo item and process it through to an emoji
-      const output = messages.reduce((allEmojis, message) =>
-          allEmojis.concat(emojiTree(message)),
-          [])
-        .reduce((messageEmoji, messageItem) => {
-          if(messageItem.type === 'emoji') {
-            console.log(messageItem.text);
-            messageEmoji.push(messageItem.text);
-          }
-          return messageEmoji;
-        }, []);
-      console.log(output);
-    })
-    .catch(console.log);
-}
-*/
-
-
-// sortable = [];
-// for(const key in counts) {
-//   sortable.push([key, counts[key]]);
-// }
-
-// sortable.sort((a, b) => b[1] - a[1]);

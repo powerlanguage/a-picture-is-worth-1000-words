@@ -5,6 +5,7 @@ import Loading from './Loading.jsx'
 
 import {
   Route,
+  Switch,
   NavLink,
   HashRouter
 } from 'react-router-dom'
@@ -23,11 +24,8 @@ class App extends React.Component{
   }
 
   componentDidMount() {
-    setTimeout(() => {
-      this.getUpdates();
-      setInterval(this.getUpdates, 500);
-    }, 750)
-
+    this.getUpdates();
+    setInterval(this.getUpdates, 500);
   }
 
   getUpdates() {
@@ -60,7 +58,7 @@ class App extends React.Component{
           </ul>
             <div className="content">
               {this.state.totalMessages ? (
-                <div>
+                <Switch>
                   <Route
                     exact path="/"
                     render={ () =>
@@ -74,7 +72,7 @@ class App extends React.Component{
                         totalMessages={this.state.totalMessages}
                         messagesContainingEmoji={this.state.messagesContainingEmoji}/>
                     }/>
-                </div>
+                </Switch>
                 ) : (
                   <Loading />
                 )}
@@ -87,24 +85,3 @@ class App extends React.Component{
 }
 
 module.exports = App;
-
-          // {this.state.totalMessages ? (
-          //   <div className="content">
-          //     <Route
-          //       exact path="/"
-          //       render={ () =>
-          //         <EmojiFeed sortedEmojiCount={sorted}/>
-          //       }/>
-          //     <Route
-          //       path="/statistics"
-          //       render={ () =>
-          //         <Stats
-          //           sortedEmojiCount={sorted}
-          //           totalMessages={this.state.totalMessages}
-          //           messagesContainingEmoji={this.state.messagesContainingEmoji}
-          //         />
-          //       }/>
-          //   </div>
-          //   ) : (
-          //     <Loading />
-          //   )

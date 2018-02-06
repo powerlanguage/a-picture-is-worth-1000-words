@@ -20,9 +20,9 @@ A user can visit a page to see the count of all emoji used
 - [x] add navigation and routes to each of these components
 - [x] add average emoji per message
 
-- [ ] basic styling
+- [x] basic styling
 - [ ] add live feed of recentlyAdded emoji
-- [ ] add loading state
+- [x] add loading state
 
 
 - [ ] add route to get count for each emoji?

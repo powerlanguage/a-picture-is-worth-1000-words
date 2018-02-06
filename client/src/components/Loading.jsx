@@ -11,6 +11,3 @@ const Loading = (props) => {
 }
 
 module.exports = Loading;
-
-
-// <b>{props.description}:</b>{props.val}
