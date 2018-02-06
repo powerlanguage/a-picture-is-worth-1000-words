@@ -5,7 +5,7 @@ const axios = require('axios');
 const emojiTree = require('emoji-tree');
 
 const app = express();
-const port = env.PORT || 3000;
+const port = process.env.PORT || 3000;
 app.listen(port, () => console.log(`Server listening on ${port}`));
 
 let url = "https://venmo.com/api/v5/public"
