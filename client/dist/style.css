@@ -23,13 +23,21 @@ body {
   border-bottom: 1px solid #d4d4d4;
 }
 
+.header {
+  text-align: center;
+  padding: 10px;
+  background-color: #009a64;
+}
+
+.header .emoji-title {
+  font-size: 2em;
+}
+
 .navigation {
   display: flex;
   list-style: none;
   padding-left: 10px;
-  background-color: #009a64;
-  border-left: 1px solid #039260;
-  border-right: 1px solid #039260;
+  background-color: #068c5d;
 }
 
 .navigation li {
@@ -48,6 +56,29 @@ body {
 
 .navigation li a.active {
   font-weight: bold;
+}
+
+.about {
+  line-height: 1.4em;
+}
+
+.about h1 {
+  line-height: 1.2em;
+  font-size: 1.5em;
+  margin-bottom: 20px;
+}
+
+.about p {
+  margin-bottom: 10px;
+}
+
+.about ul {
+  margin-bottom: 10px;
+  padding-left: 2em;
+}
+
+.about ul li {
+  margin-bottom: 5px;
 }
 
 .statistics .information {

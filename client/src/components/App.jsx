@@ -1,5 +1,7 @@
 import React from 'react'
 import Stats from './Stats.jsx'
+import About from './About.jsx'
+import Header from './Header.jsx'
 import EmojiFeed from './EmojiFeed.jsx'
 import Loading from './Loading.jsx'
 
@@ -24,6 +26,7 @@ class App extends React.Component{
   }
 
   componentDidMount() {
+    document.title = "🖼 ️💰 1️⃣0️⃣0️⃣0️⃣ 🔡"
     this.getUpdates();
     setInterval(this.getUpdates, 500);
   }
@@ -52,9 +55,11 @@ class App extends React.Component{
     return(
       <HashRouter>
         <div id="container">
+          <Header />
           <ul className="navigation">
             <li><NavLink exact to="/">Feed</NavLink></li>
             <li><NavLink to="/statistics">Statistics</NavLink></li>
+            <li><NavLink to="/about">About</NavLink></li>
           </ul>
             <div className="content">
               {this.state.totalMessages ? (
@@ -72,6 +77,10 @@ class App extends React.Component{
                         totalMessages={this.state.totalMessages}
                         messagesContainingEmoji={this.state.messagesContainingEmoji}/>
                     }/>
+                  <Route
+                    path="/about"
+                    component={About}
+                  />
                 </Switch>
                 ) : (
                   <Loading />
