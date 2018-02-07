@@ -7,7 +7,7 @@ const Emoji = (props) => {
   }
 
   return (
-    <span style={style}>{props.emoji}</span>
+    <span style={style} title={props.count}>{props.emoji}</span>
   )
 }
 
